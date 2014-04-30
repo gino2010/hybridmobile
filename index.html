@@ -4,32 +4,25 @@
     <meta charset="UTF-8">
     <title>AngularJS Tutorial</title>
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
-    <script src="main.js"></script>
 </head>
 <body>
 
-<div ng-app="">
-    <!--you can replace message by data.message
-    data.message will bind all controllers
-    message will not
-    -->
-    <input type="text" ng-model="message">
-
-    <h1>{{message}}</h1>
+<div ng-app="myApp">
 
     <div ng-controller="firstCtrl">
-        <input type="text" ng-model="message">
+        <input type="text" ng-model="data.message">
 
-        <h1>{{message}}</h1>
+        <h1>{{data.message}}</h1>
     </div>
 
     <div ng-controller="secondCtrl">
-        <input type="text" ng-model="message">
+        <input type="text" ng-model="data.message">
 
-        <h1>{{message}}</h1>
+        <h1>{{data.message}}</h1>
     </div>
 </div>
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
