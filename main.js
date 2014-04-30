@@ -1,4 +1,7 @@
 function firstCtrl($scope){
-    $scope.data = {message: "panel"};
+    $scope.message = "first"
+}
 
+function secondCtrl($scope){
+    $scope.message = "second"
 }

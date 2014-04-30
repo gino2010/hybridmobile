@@ -9,12 +9,24 @@
 <body>
 
 <div ng-app="">
-    <div ng-controller="firstCtrl">
-        <h1> {{data.message + " world"}}</h1>
+    <!--you can replace message by data.message
+    data.message will bind all controllers
+    message will not
+    -->
+    <input type="text" ng-model="message">
 
-        <div class="{{data.message}}">
-            Wrap me with a foundation component
-        </div>
+    <h1>{{message}}</h1>
+
+    <div ng-controller="firstCtrl">
+        <input type="text" ng-model="message">
+
+        <h1>{{message}}</h1>
+    </div>
+
+    <div ng-controller="secondCtrl">
+        <input type="text" ng-model="message">
+
+        <h1>{{message}}</h1>
     </div>
 </div>
 
