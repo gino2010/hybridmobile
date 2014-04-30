@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <title>AngularJS Tutorial</title>
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
+    <script src="main.js"></script>
 </head>
 <body>
 
 <div ng-app="">
-    <input type="text" ng-model="data.message">
+    <div ng-controller="firstCtrl">
+        <h1> {{data.message + " world"}}</h1>
 
-    <h1> {{data.message + " world"}}</h1>
-    <div class="{{data.message}}">
-        Wrap me with a foundation component
+        <div class="{{data.message}}">
+            Wrap me with a foundation component
+        </div>
     </div>
 </div>
 
