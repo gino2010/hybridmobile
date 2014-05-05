@@ -1,58 +1,18 @@
-var app = angular.module('superApp', []);
+var app = angular.module('choreApp', []);
 
-app.directive("superhero", function () {
+app.controller("ChoreCtrl", function ($scope) {
+    $scope.logChore = function (chorep) {
+        alert(chorep + " is done");
+    };
+});
+
+app.directive("kid", function () {
     return {
         restrict: "E",
-        scope: {},
-
-        controller: function ($scope) {
-            $scope.abilities = [];
-
-            this.addStrength = function () {
-                $scope.abilities.push("strength");
-            };
-
-            this.addSpeed = function () {
-                $scope.abilities.push("speed");
-            };
-
-            this.addFlight = function () {
-                $scope.abilities.push("flight");
-            };
+        scope: {
+            done: "&"
         },
-
-        link: function (scope, element) {
-            element.addClass("button");
-            element.bind("mouseenter", function () {
-                console.log(scope.abilities);
-            });
-        }
-    };
-});
-
-app.directive("strength", function () {
-    return {
-        require: "superhero",
-        link: function (scope, element, attrs, superheroCtrl) {
-            superheroCtrl.addStrength();
-        }
-    };
-});
-
-app.directive("speed", function () {
-    return {
-        require: "superhero",
-        link: function (scope, element, attrs, superheroCtrl) {
-            superheroCtrl.addSpeed();
-        }
-    };
-});
-
-app.directive("flight", function () {
-    return {
-        require: "superhero",
-        link: function (scope, element, attrs, superheroCtrl) {
-            superheroCtrl.addFlight();
-        }
+        template: '<input type="text" ng-model="chorei"> {{ chorei }} <br/>' +
+            '<div class="button" ng-click="done({chorep:chorei})">I\'m done</div>'
     };
 });
