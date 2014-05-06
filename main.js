@@ -1,20 +1,17 @@
 var app = angular.module("app", []);
 
-app.directive("zippy", function () {
+app.directive("dumbPassword", function () {
     return {
-        restrict: 'E',
-        transclude: true,
-        scope: {
-            title: "@"
-        },
-        template: '<div><h3 ng-click="toggleContent()">{{title}}</h3><div ng-show="isContentVisible">Hi world, <p ng-transclude></p></div></div>',
-        link: function (scope) {
-            scope.isContentVisible = false;
-            scope.toggleContent = function () {
-                scope.isContentVisible = !scope.isContentVisible;
-            }
+        restrict: "E",
+        replace: true,
+        template: '<div>\n    <input type="text" ng-model="model.input"/>\n    <div>{{model.input}}</div>\n    \n</div>',
+        link: function (scope, element) {
+            scope.$watch("model.input", function (value) {
+                if (value === "password") {
+                    console.log("change it");
+                    element.children().last().toggleClass("alert-box alert")
+                }
+            })
         }
-
-
     }
-})
+});
