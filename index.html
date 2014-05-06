@@ -8,10 +8,18 @@
 <body>
 
 <div ng-app="app">
-    <div ng-controller="MyCtrl">
-        <div my-directive></div>
-    </div>
+    <!--<script type="text/ng-template" id="zippy.html">-->
+        <!--<div><h3 ng-click="toggleContent()">{{title}}</h3>-->
+            <!--<div ng-show="isContentVisible">Hi world, <p ng-transclude></p></div>-->
+        <!--</div>-->
+    <!--</script>-->
+    <input type="text" ng-model="model.title"/>
+    <input type="text" ng-model="model.content"/>
+    <zippy title="{{model.title}}">
+        This is {{model.content}}
+    </zippy>
 </div>
+
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="main.js"></script>

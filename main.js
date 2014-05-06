@@ -1,14 +1,18 @@
 var app = angular.module("app", []);
 
-app.controller("MyCtrl", ['$scope', '$http', function(a, b){
-    console.log(b);
-}])
-
-app.directive("myDirective", function () {
+app.directive("zippy", function () {
     return {
-        scope:{},
-        link: function(scope, element, attrs) {
-            console.log(scope)
+        restrict: 'E',
+        transclude: true,
+        scope: {
+            title: "@"
+        },
+        templateUrl: 'zippy.html',
+        link: function (scope) {
+            scope.isContentVisible = false;
+            scope.toggleContent = function () {
+                scope.isContentVisible = !scope.isContentVisible;
+            }
         }
     }
-});
+})
