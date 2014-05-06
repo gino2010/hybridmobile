@@ -1,13 +1,18 @@
 var app = angular.module("app", []);
 
-app.directive("zippy", function () {
+app.run(function ($templateCache) {
+    $templateCache.put("zippy.html", '<div><h3 ng-click="toggleContent()">{{title}}</h3><div ng-show="isContentVisible">Hi world, <p ng-transclude></p></div></div>');
+})
+
+app.directive("zippy", function ($templateCache) {
+    console.log($templateCache.get("zippy.html"))
     return {
         restrict: 'E',
         transclude: true,
         scope: {
             title: "@"
         },
-        templateUrl: 'zippy.html',
+        templateUrl: "zippy.html",
         link: function (scope) {
             scope.isContentVisible = false;
             scope.toggleContent = function () {
