@@ -1,13 +1,9 @@
 var app = angular.module("phoneApp", []);
 
 app.controller("AppCtrl", function ($scope) {
+    this.sayHi = function () {
+        alert("hi")
+    }
 
-});
-
-app.directive("panel", function() {
-    return {
-        restrict: "E",
-        transclude: true,
-        template: '<div class="panel">This is a panel component <div ng-transclude></div></div>'
-    };
+    return $scope.AppCtrl = this;
 });
