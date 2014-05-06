@@ -7,10 +7,12 @@
 </head>
 <body>
 
-<div ng-app="phoneApp">
-    <div ng-controller="AppCtrl">
-       <div class="button" ng-click="AppCtrl.sayHi()">Click me!</div>
-    </div>
+<div ng-app="app">
+    <input type="text" ng-model="model.title"/>
+    <input type="text" ng-model="model.content"/>
+    <zippy title="{{model.title}}">
+        This is {{model.content}}
+    </zippy>
 </div>
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
