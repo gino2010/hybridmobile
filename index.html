@@ -8,16 +8,13 @@
 <body>
 
 <div ng-app="app">
-
-    <input type="text" ng-model="model.title"/>
-    <input type="text" ng-model="model.content"/>
-    <zippy title="{{model.title}}">
-        This is {{model.content}}
-    </zippy>
+    <ng-view></ng-view>
 </div>
 
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js" type="text/javascript"></script>-->
 <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
