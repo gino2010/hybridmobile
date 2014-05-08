@@ -12,6 +12,18 @@ app.config(function ($routeProvider) {
 
 });
 
+app.directive("error", function($rootScope){
+    return {
+        restrict: "E",
+        template: '<div class="alert-box alert" ng-show="isError">Error!!!!</div>',
+        link: function(scope) {
+            $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
+                scope.isError = true;
+            });
+        }
+    }
+})
+
 app.controller('AppCtrl', function ($rootScope) {
     $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
         console.log(rejection);
@@ -31,6 +43,7 @@ viewCtrl.loadData = function ($q, $timeout) {
     var defer = $q.defer();
     $timeout(function () {
         defer.reject("your network is down");
+//        defer.resolve();
     }, 2000);
     return defer.promise;
 };
