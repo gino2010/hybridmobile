@@ -4,34 +4,33 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: "app.html",
-            controller: "AppCtrl",
+            controller: "ViewCtrl",
             resolve: {
-                loadData: appCtrl.loadData,
-                prepData: appCtrl.preData
+                loadData: viewCtrl.loadData
             }
-        })
+        });
 
 });
 
-var appCtrl = app.controller("AppCtrl", function ($scope, $route) {
-    console.log($route)
+app.controller('AppCtrl', function ($rootScope) {
+    $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
+        console.log(rejection);
+        $rootScope.message = rejection;
+        alert($rootScope.message);
+    });
+});
+
+var viewCtrl = app.controller("ViewCtrl", function ($scope, $route) {
+    console.log($route);
     $scope.model = {
-        message: "This is my app"
+        message: 'This is my app'
     };
 });
 
-appCtrl.loadData = function ($q, $timeout) {
+viewCtrl.loadData = function ($q, $timeout) {
     var defer = $q.defer();
     $timeout(function () {
-        defer.resolve("loadData");
+        defer.reject("your network is down");
     }, 2000);
     return defer.promise;
-}
-
-appCtrl.preData = function ($q, $timeout) {
-    var defer = $q.defer();
-    $timeout(function () {
-        defer.resolve("preData");
-    }, 2000);
-    return defer.promise;
-}
+};
