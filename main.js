@@ -1,18 +1,25 @@
 var app = angular.module("app", []);
 
-app.factory("game", function () {
+app.directive("clock", function() {
     return {
-        title: "StarCraft"
-    };
-});
+        restrict: 'E',
+        scope: {
+            timezone: "@"
+        },
+        template: "<div>12:00pm {{timezone}}</div>"
+    }
+})
 
-//angular.injector(["app"]).invoke(function (game) {
-//   alert(game.title);
-//});
-
-app.controller("AppCtrl", function ($scope, $injector) {
-    $injector.invoke(function (game) {
-        $scope.title = game.title;
-        alert(game.title);
-    });
-});
+app.directive("panel", function() {
+    return {
+        restrict: 'E',
+        transclude: true,
+        scope: {
+            title: "@"
+        },
+        template: "<div style='border: 3px solid #000000'>" +
+            "<div class='alert-box'>{{title}}</div>" +
+            "<div ng-transclude></div>" +
+            "</div>"
+    }
+})
