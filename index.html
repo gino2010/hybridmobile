@@ -7,13 +7,15 @@
 </head>
 <body>
 
-<div ng-app="app">
-    <clock timezone="MST"></clock>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <panel title="I'm title">
-        <clock timezone="PST"></clock>
-    </panel>
-
+<div ng-app="app" ng-controller="foo">
+    <div class="button"
+            ng-repeat="item in 'somewords'.split('') track by $index"
+            ng-click="myFunc($event); ev=$event">
+        <!--$log.debug($event); ev=$event-->
+        <!--info warn-->
+        {{$index + 1}}. {{item}}
+        {{ev.pageX}}
+    </div>
 </div>
 
 
