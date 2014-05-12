@@ -5,16 +5,16 @@
     <title>AngularJS Tutorial</title>
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
 </head>
-<body>
+<body style="padding: 40px 40px;">
 
-<div ng-app="app" ng-controller="foo">
-    <div class="button"
-            ng-repeat="item in 'somewords'.split('') track by $index"
-            ng-click="myFunc($event); ev=$event">
-        <!--$log.debug($event); ev=$event-->
-        <!--info warn-->
-        {{$index + 1}}. {{item}}
-        {{ev.pageX}}
+<div ng-app="app" ng-controller="RoomCtrl as room">
+    <div class="button" ng-click="room.openDoor()">
+        {{room.buttonTitle}}
+
+        <div ng-controller="OtherCtrl as other">
+            {{room.foo}}
+            {{other.foo}}
+        </div>
     </div>
 </div>
 
