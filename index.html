@@ -5,18 +5,15 @@
     <title>AngularJS Tutorial</title>
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
 </head>
-<body style="padding: 40px 40px;">
 
-<div ng-app="app" ng-controller="RoomCtrl as room">
-    <div class="button" ng-click="room.openDoor()">
-        {{room.buttonTitle}}
+<body ng-app="app">
+<country>
+    <state>
+        <city>
 
-        <div ng-controller="OtherCtrl as other">
-            {{room.foo}}
-            {{other.foo}}
-        </div>
-    </div>
-</div>
+        </city>
+    </state>
+</country>
 
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
