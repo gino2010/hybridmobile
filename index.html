@@ -8,11 +8,13 @@
 
 <body ng-app="app" ng-controller="AppCtrl as app">
 
-<button class="btn" ng-click="app.toggle=!app.toggle">Toggle Animation</button>
+<button id="my-button" class="btn-primary" ng-click="app.fadeIt()">Toggle Animation</button>
+<br/>
 
-<div class="toggle" ng-if="app.toggle">Some content here</div>
+<div id="my-badge" class="badge" hide-me="app.isHidden">Some content here</div>
 
 
+<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
 <script type="text/javascript" src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
