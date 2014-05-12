@@ -1,9 +1,9 @@
 var app = angular.module("app", []);
 
-app.directive("country", function() {
+app.directive("country", function () {
     return {
         restrict: "E",
-        controller: function(){
+        controller: function () {
             this.makeAnnouncement = function (message) {
                 console.log("Country says:" + message);
             }
@@ -11,11 +11,11 @@ app.directive("country", function() {
     }
 });
 
-app.directive("state", function() {
+app.directive("state", function () {
     return {
         restrict: "E",
-        controller: function() {
-            this.makeLaw = function(law) {
+        controller: function () {
+            this.makeLaw = function (law) {
                 console.log("Law: " + law)
             }
         },
@@ -25,11 +25,14 @@ app.directive("state", function() {
     }
 });
 
-app.directive("city", function() {
+app.directive("city", function () {
     return {
         restrict: "E",
         require: ["^country", "^state"],
-        link: function(scope, element, attrs, ctrls) {
+        controller: function ($scope) {
+            $scope.things = ['one', 'two', 'three'];
+        },
+        link: function (scope, element, attrs, ctrls) {
             ctrls[0].makeAnnouncement("This city rocks.");
             ctrls[1].makeLaw("Jumper higher");
         }
